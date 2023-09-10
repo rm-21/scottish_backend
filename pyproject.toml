@@ -1,0 +1,67 @@
+[tool.poetry]
+name = "scottish-backend"
+version = "0.1.0"
+description = ""
+authors = ["rishabh <connect@rishabhm.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+ibpy = {git = "https://github.com/rm-21/ibpy.git"}
+sqlalchemy = "^2.0.20"
+asyncpg = "^0.28.0"
+alembic = "^1.12.0"
+pydantic = "^2.3.0"
+pydantic-settings = "^2.0.3"
+fastapi = "^0.103.1"
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
+python-multipart = "^0.0.6"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+gunicorn = "^21.2.0"
+httptools = "^0.6.0"
+uvloop = "^0.17.0"
+tenacity = "^8.2.3"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.5.1"
+ruff = "^0.0.287"
+black = "^23.9.0"
+pre-commit = "^3.4.0"
+isort = "^5.12.0"
+
+[tool.pyright]
+reportGeneralTypeIssues = false
+reportPrivateUsage = false
+reportMissingTypeStubs = false
+reportFunctionMemberAccess = false
+reportUnknownMemberType = false
+reportUnknownArgumentType = false
+reportUnknownVariableType = false
+reportUnusedFunction = false
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+implicit_reexport = false
+disallow_untyped_defs = true
+follow_imports = 'silent'
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+ignore = ["E741"]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
